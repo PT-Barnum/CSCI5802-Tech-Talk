@@ -1,0 +1,5 @@
+rootProject.name = 'server'
+
+include ':webapp'
+include ':commons-math'
+

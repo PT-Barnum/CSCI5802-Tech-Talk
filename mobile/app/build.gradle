@@ -1,0 +1,260 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+def versionMajor = 2
+def versionMinor = 4
+def versionPatch = 0
+def versionBuild = 3
+
+
+static def buildTime() {
+    def df = new SimpleDateFormat("yyyyMMdd HH:mm 'UTC'")
+    df.setTimeZone(TimeZone.getTimeZone("UTC"))
+    return df.format(new Date())
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
+    defaultConfig {
+        applicationId "org.gnucash.android"
+        testApplicationId 'org.gnucash.android.test'
+        minSdkVersion 21
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 28
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        resValue "string", "app_version_name", "${versionName}"
+        resValue "string", "app_minor_version", "${versionMinor}"
+        resValue "string", "app_name", "GnuCash"
+        resValue "string", "dropbox_app_key", "dhjh8ke9wf05948"
+        resValue "string", "dropbox_app_secret", "h2t9fphj3nr4wkw"
+        resValue "string", "manifest_dropbox_app_key", "db-dhjh8ke9wf05948"
+        buildConfigField "boolean", "CAN_REQUEST_RATING", "false"
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
+        multiDexEnabled true
+        testInstrumentationRunner "org.gnucash.android.test.ui.util.GnucashAndroidTestRunner"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../debug.keystore")
+        }
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (project.hasProperty("RELEASE_STORE_FILE")){
+                signingConfig signingConfigs.release
+            } else {
+                signingConfig signingConfigs.debug
+            }
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            testCoverageEnabled true
+            signingConfig signingConfigs.debug
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.all {
+            testLogging {
+                events 'passed', 'skipped', 'failed'
+            }
+        }
+        animationsDisabled = true
+    }
+}
+
+afterEvaluate {
+    apply plugin: 'spoon'
+    spoon {
+        debug = true
+        grantAllPermissions = true
+        codeCoverage = true
+    }
+}
+
+def androidSupportVersion       = "28.0.0"
+def androidEspressoVersion      = "3.0.0"
+def androidSupportTestVersion   = "1.0.0"
+
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.github.nextcloud:android-library:1.0.31'
+    implementation('com.android.support:support-v4:'       + androidSupportVersion,
+                   'com.android.support:appcompat-v7:'     + androidSupportVersion,
+                   'com.android.support:design:'           + androidSupportVersion,
+                   'com.android.support:cardview-v7:'      + androidSupportVersion,
+                   'com.android.support:preference-v7:'    + androidSupportVersion,
+                   'com.android.support:recyclerview-v7:'  + androidSupportVersion,
+                   'com.code-troopers.betterpickers:library:3.1.0',
+                   'org.jraf:android-switch-backport:2.0.1@aar',
+                   'com.github.PhilJay:MPAndroidChart:v2.1.3',
+                   'joda-time:joda-time:2.9.4',
+                   'com.google.android.gms:play-services-drive:9.6.1',
+                   'io.github.kobakei:ratethisapp:1.1.3',
+                   'com.squareup:android-times-square:1.6.5@aar',
+                   'com.github.techfreak:wizardpager:1.0.3',
+                   'net.objecthunter:exp4j:0.4.7',
+                   'org.apache.jackrabbit:jackrabbit-webdav:2.13.3',
+                   'com.dropbox.core:dropbox-core-sdk:3.0.3',
+                   'com.android.support:multidex:1.0.1'
+    )
+
+    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation ('com.uservoice:uservoice-android-sdk:1.2.6') {
+        exclude module: 'commons-logging'
+        exclude module: 'httpcore'
+        exclude module: 'httpclient'
+    }
+
+    testImplementation 'org.robolectric:robolectric:4.3'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+
+    testImplementation(
+            'junit:junit:4.12',
+            'joda-time:joda-time:2.9.4',
+            'org.assertj:assertj-core:1.7.1'
+    )
+    testImplementation 'org.robolectric:shadows-multidex:3.0'
+
+    androidTestImplementation (
+            'com.android.support:support-annotations:'  + androidSupportVersion,
+            'com.android.support.test:runner:'          + androidSupportTestVersion,
+            'com.android.support.test:rules:'           + androidSupportTestVersion,
+            'com.android.support.test.espresso:espresso-core:'      + androidEspressoVersion,
+            'com.android.support.test.espresso:espresso-intents:'   + androidEspressoVersion,
+            'com.android.support:appcompat-v7:'     + androidSupportVersion,
+            'com.android.support:design:'           + androidSupportVersion)
+    androidTestImplementation ('com.android.support.test.espresso:espresso-contrib:'   + androidEspressoVersion) {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
+    androidTestImplementation('com.squareup.assertj:assertj-android:1.1.1'){
+        exclude group: 'com.android.support', module:'support-annotations'
+    }
+
+    androidTestImplementation 'com.squareup.spoon:spoon-client:1.6.4'
+
+    implementation 'com.android.volley:volley:1.1.1'
+}
+
+task grantAnimationPermission(type: Exec, dependsOn: 'installDebug') {
+    def localProperties = new File(rootDir, "local.properties")
+    if (localProperties.exists()) {
+        Properties properties = new Properties()
+        localProperties.withInputStream {
+            instr -> properties.load(instr)
+        }
+        def sdkDir = properties.getProperty('sdk.dir')
+        def adb = "$sdkDir/platform-tools/adb"
+        commandLine "$adb shell pm grant org.gnucash.android android.permission.SET_ANIMATION_SCALE".split(' ')
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith('connected')) {
+        task.dependsOn grantAnimationPermission
+    }
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+task jacocoUnitTestCoverage(type : JacocoReport, dependsOn : ['testDebugUnitTest']) {
+    group       = 'Reporting'
+    description = 'Generate JaCoCo coverage report for unit tests'
+    reports {
+        xml.enabled  = true
+        html.enabled = true
+    }
+    def fileFilter = ['**/R.class', '**/BuildConfig.class','**/R.class','**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def coverageSourceDirs = ["${project.projectDir}/src/main/java"]
+    classDirectories = fileTree(dir:"${buildDir}/intermediates/javac/debug/compileDebugJavaWithJavac/classes", excludes: fileFilter)
+    sourceDirectories = files(coverageSourceDirs)
+
+    executionData = fileTree(
+            dir     : "${buildDir}",
+            include : ['jacoco/testDebugUnitTest.exec']
+    )
+}
+
+task jacocoGUITestCoverage(type : JacocoReport, dependsOn : ['connectedDebugAndroidTest']) {
+    group       = 'Reporting'
+    description = 'Generate JaCoCo coverage report for GUI tests'
+    reports {
+        xml.enabled  = true
+        html.enabled = true
+    }
+    def fileFilter = ['**/R.class', '**/BuildConfig.class','**/R.class','**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def coverageSourceDirs = ["${project.projectDir}/src/main/java"]
+    classDirectories = fileTree(dir:"${buildDir}/intermediates/javac/debug/compileDebugJavaWithJavac/classes", excludes: fileFilter)
+    sourceDirectories = files(coverageSourceDirs)
+
+    executionData = fileTree(
+            dir     : "${buildDir}",
+            include : ['outputs/code-coverage/connected/*coverage.ec']
+    )
+}
+
+task jacocoUnifiedTestCoverage(type : JacocoReport, dependsOn : ['testDebugUnitTest','connectedDebugAndroidTest']) {
+    group       = 'Reporting'
+    description = 'Generate JaCoCo coverage report for unit and GUI tests'
+    reports {
+        xml.enabled  = true
+        html.enabled = true
+    }
+    def fileFilter = ['**/R.class', '**/BuildConfig.class','**/R.class','**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def coverageSourceDirs = ["${project.projectDir}/src/main/java"]
+    classDirectories = fileTree(dir:"${buildDir}/intermediates/javac/debug/compileDebugJavaWithJavac/classes", excludes: fileFilter)
+    sourceDirectories = files(coverageSourceDirs)
+
+    executionData = fileTree(
+            dir     : "${buildDir}",
+            include : ['jacoco/testDebugUnitTest.exec','outputs/code-coverage/connected/*coverage.ec']
+    )
+}

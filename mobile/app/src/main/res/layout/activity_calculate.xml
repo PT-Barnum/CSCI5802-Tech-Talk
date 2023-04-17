@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+    <include android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar" />
+    <TextView
+        android:id="@+id/label_enter_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="16dp"
+        android:justificationMode="inter_word"
+        android:text="@string/label_enter_number"/>
+    <EditText
+        android:id="@+id/text_box_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:hint="@string/text_box_number_hint"
+        android:textSize="16dp" />
+    <Button
+        android:id="@+id/button_add_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="@string/button_add_number"
+        android:onClick="addNumber"
+        android:textSize="16dp" />
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="@string/button_clear"
+        android:onClick="clear"
+        android:textSize="16dp" />
+    <Button
+        android:id="@+id/button_compute_mean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="@string/button_compute_mean"
+        android:onClick="computeMean"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/label_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="16dp"/>
+</LinearLayout>

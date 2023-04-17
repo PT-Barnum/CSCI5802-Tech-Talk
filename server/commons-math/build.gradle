@@ -1,0 +1,4 @@
+task testCommonsMath(type: Exec) {
+    workingDir rootProject.getProjectDir().getAbsolutePath() + "/commons-math"
+    commandLine "mvn", "test"
+}

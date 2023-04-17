@@ -1,0 +1,15 @@
+Warning: NLS missing message: ConsoleMain_MSG_DEVOPS_LICENSE_COMPATIBILITY in: com.kms.katalon.execution.constants.executionMessages
+Warning: NLS missing message: ConsoleMain_MSG_NON_DEVOPS_LICENSE_COMPATIBLITY in: com.kms.katalon.execution.constants.executionMessages
+Activating...
+Start getting machine ID on Windows
+Start appending additional signatures
+hardwareSerialNumber 
+osDependentUsername owner
+End appending additional signatures cf63ac0c-5ffe-48cd-8a7f-5f466f5f21b7__owner
+End getting machine ID on Windows 2b7c7e7606b267d85fc83e11efc6362e
+Start activating offline...
+Search for valid offline licenses in folder: C:\Users\Owner\.katalon\license
+The number of valid offline licenses: 0
+Start activating online...
+Katalon TestOps: Unexpected response, URL: https://admin.katalon.com/oauth/token, Status: 400, Response: {"error":"invalid_grant","error_description":"Authentication failed."}
+All launchers terminated

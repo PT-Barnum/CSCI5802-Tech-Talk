@@ -1,0 +1,156 @@
+katalon.versionNumber=8.6.0
+katalon.buildNumber=208
+!SESSION 2023-04-16 22:02:36.755 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_282
+java.vendor=Azul Systems, Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data @noDefault
+
+!ENTRY org.eclipse.core.filebuffers 4 0 2023-04-16 22:02:58.542
+!MESSAGE The content type with id "org.eclipse.buildship.core.files.gradlebuildscript" specified in the extension point does not exist.
+
+!ENTRY org.eclipse.core.filebuffers 4 0 2023-04-16 22:02:58.545
+!MESSAGE The content type with id "org.eclipse.buildship.core.files.gradlebuildscript" specified in the extension point does not exist.
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-04-16 22:02:58.982
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Owner'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for CTRL+SHIFT+D:
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(org.eclipse.jdt.debug.ui.commands.Display,Display,
+		Display result of evaluating selected text,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@144caca6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(com.kms.katalon.composer.execution.command.debug,,
+		Debug,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@532782f5,
+		[Parameter(com.kms.katalon.composer.execution.runMode,Run Mode,null,true)],,true),[org.eclipse.core.commands.Parameterization@de6e4672]),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for CTRL+V:
+Binding(CTRL+V,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.paste,Paste,
+		Paste from the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3c2d4274,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+V,
+	ParameterizedCommand(Command(com.kms.katalon.composer.explorer.command.paste,Explorer Paste Command,
+		,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18b8518b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for CTRL+C:
+Binding(CTRL+C,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.copy,Copy,
+		Copy the selection to the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6960e7a6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+C,
+	ParameterizedCommand(Command(com.kms.katalon.composer.explorer.command.copy,Explorer Copy Command,
+		,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@63fe055,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for DEL:
+Binding(DEL,
+	ParameterizedCommand(Command(com.kms.katalon.composer.explorer.command.delete,Explorer Delete Command,
+		,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@50572c04,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+Binding(DEL,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.delete,Delete,
+		Delete the selection,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ab90b8c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for CTRL+X:
+Binding(CTRL+X,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.cut,Cut,
+		Cut the selection to the clipboard,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@640a80aa,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+X,
+	ParameterizedCommand(Command(com.kms.katalon.composer.explorer.command.cut,Explorer Cut Command,
+		,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d4ee936,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for F2:
+Binding(F2,
+	ParameterizedCommand(Command(com.kms.katalon.composer.explorer.command.rename,Explorer Rename Command,
+		,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7410c197,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+Binding(F2,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
+		Rename the selected item,
+		Category(org.eclipse.ui.category.file,File,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@363751f2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-04-16 22:03:02.121
+!MESSAGE A conflict occurred for F3:
+Binding(F3,
+	ParameterizedCommand(Command(com.kms.katalon.composer.explorer.command.open,Explorer Open Command,
+		,
+		Category(org.eclipse.e4.ui.model.application.MApplication,Application Category,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@688884e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow ,,,system)
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.open.editor,Open Declaration,
+		Open an editor on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6c65c6f0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2023-04-16 22:04:24.228
+!MESSAGE Reloading plugins.
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2023-04-16 22:04:26.728
+!MESSAGE Reloaded plugins successfully.
